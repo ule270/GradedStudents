@@ -7,24 +7,25 @@ public class Student {
     String lastname;
     ArrayList<Double> examScores;
 
-    public Student(String firstName, String lastName, Double[] testScores) {
+    public Student(String firstName, String lastName, Double[] examScores) {
         this.firstName = firstName;
         this.lastname = lastName;
-
+        this.examScores = null;
     }
-    public String getFirstName(){
-        return null;
+    public static String getFirstName(String firstname){
+        return firstname;
     }
 
     public static String getLastName(String lastname){
         return lastname;
     }
 
-    public Integer getNumberOfExamsTaken() {
-        return null;
+    public static Integer getNumberOfExamsTaken(Integer numberOfExams) {
+        return numberOfExams;
     }
-    public String getExamScores(){
-        return null;
+    public static Double[] getExamScores(Double[] examScores){
+
+        return examScores;
     }
 
     public Double addExamScore(double examScore){
