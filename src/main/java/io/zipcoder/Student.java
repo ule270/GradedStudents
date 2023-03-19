@@ -2,17 +2,19 @@ package io.zipcoder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Student {
     private static String firstName;
     private static String lastName;
-    static Double[] examScores;
+    private static ArrayList<Double> examScores;
 
-    public Student(String firstName, String lastName, Double[] examScores) {
+    public double avgScore;
+
+    public Student(String firstName, String lastName, Double[] examScore) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.examScores = null;
+        this.examScores = new ArrayList<>();
+        this.examScores.addAll(Arrays.asList(examScore));
     }
     public static String getFirstName(String firstName){
 
@@ -24,37 +26,39 @@ public class Student {
         return lastName;
     }
 
-    public static Integer getNumberOfExamsTaken(Integer numberOfExams) {
 
-        return numberOfExams;
-    }
-    public static Double[] getExamScores(Double[] examScores){
-
-        return examScores;
+    public void addExamScore(double examScore){
+            examScores.add(examScore);
     }
 
-    public static String getExamScoresString(Student student){
-//        String allExamsTaken = (Student.getFirstName(firstName) + Student.getLastName(lastName) + Student.getExamScores(examScores).toString());
-//        return allExamsTaken;
-        return null;
+    public static Integer getNumberOfExamsTaken() {
+        return examScores.size();
+
+    }
+    public String getExamScores() {
+        String result = "";
+        int examNumber = 1;
+        for(Double i : examScores) {
+            result += "Exam " + examNumber++ + " -> " + i + "\n";
+        }
+        return result;
     }
 
-    public static Double[] addExamScore(double examScore){
-        ArrayList<Double> arrayList= new ArrayList<Double>(Arrays.asList(examScore));
-        arrayList.add(examScore);
-        return (Double[]) arrayList.toArray();
-    }
-    public static Integer setExamScore(int examNumber, double newScore){
-
-        return null;
+    public void setExamScore(int examNumber, double newScore){
+        examScores.set(examNumber, newScore);
     }
 
-    // should return the sum of the examScore list divided by its size
-    public static Double getAverageExamScore(){
-        return null;
-    }
-    // return a clean String representation of person
-    public static String Student(){
-        return null;
+    public double getAverageExamScore(){
+        double totalScore = 0.0;
+//        // checks if examScores is null or empty --> so no nullPointerException
+        if (examScores != null && !examScores.isEmpty()) {
+            for (Double i : examScores){
+                totalScore += i;
+            }
+            avgScore = totalScore/examScores.size();
+        } else {
+            avgScore = 0.0;
+        }
+        return avgScore;
     }
 }
