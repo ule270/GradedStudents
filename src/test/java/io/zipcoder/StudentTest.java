@@ -44,6 +44,7 @@ public class StudentTest {
 
     @Test
     public void testNumberOfExamsTaken() {
+
         Integer numberOfExams = 0;
 
         Integer expected = Student.getNumberOfExamsTaken(numberOfExams);
@@ -52,16 +53,51 @@ public class StudentTest {
 
         Assert.assertEquals(expected, actual);
     }
-//
+
+    @Test
+    public void testGetExamScores(){
+        Double[] examScores = {};
+
+        Double[] expected = Student.getExamScores(examScores);
+
+        Double[] actual = Student.getExamScores(examScores);
+
+        Assert.assertEquals(expected, actual);
+    }
+
 //    @Test
-//    public void testGetExamScores) {
-//        Integer examScores = 0;
+//    public void testGetExamScoresString() {
+////        given
+//        String firstName = "Leon";
+//        String lastName = "Hunter";
+//        Double[] examScores = {};
+//        Student student = new Student(firstName, lastName, examScores);
 //
-//        Integer expected = Student.getExamScores(examScores);
+//        // When
+//        String expected = Student.getExamScoresString(student);
+//        String actual = Student.getExamScoresString(student);
 //
-//        Integer actual = Student.getExamScores(examScores);
-//
+//        // Then
 //        Assert.assertEquals(expected, actual);
+//
 //    }
+
+    @Test
+    public void testAddExamScore () {
+// : Given
+        String firstName = "Leon";
+        String lastName = "Hunter";
+        Double[] examScores = {};
+        Double scoreToAdd = (double) 1;
+        Student student = new Student(firstName, lastName, examScores);
+
+        // When
+        Double[] actual = Student.addExamScore(scoreToAdd);
+        Double[] expected = student.addExamScore(scoreToAdd);
+
+   // Then
+        Assert.assertEquals(expected, actual);
+    }
+
 
 }
