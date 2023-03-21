@@ -3,11 +3,10 @@ package io.zipcoder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 public class ClassroomTest {
 
     @Test
-    public void maxClassSizeConstructorTest() {
+    public void testMaxClassSizeConstructor() {
         //Given
         Classroom classroom = new Classroom(10);
         Integer expected = 10;
@@ -20,7 +19,7 @@ public class ClassroomTest {
 
     }
     @Test
-    public void nullaryConstructorTest() {
+    public void testNullaryConstructor() {
         //Given
         Classroom classroom = new Classroom();
         Integer expected = 30;
@@ -64,6 +63,22 @@ public class ClassroomTest {
         // Then
         String actual = postEnrollment[0].toString();
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testRemoveStudent(){
+        Classroom classroom = new Classroom();
+        String firstName = "Michael";
+        String lastName = "Nguyen";
+
+        Student[] preEnrollment = classroom.getStudents();
+        classroom.removeStudent(firstName, lastName);
+        Student[] postEnrollment = classroom.getStudents();
+
+        // Then
+        String actual = postEnrollment[0].toString();
+        Assert.assertEquals(postEnrollment, actual);
+
     }
 
 }
