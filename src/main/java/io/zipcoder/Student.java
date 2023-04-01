@@ -16,14 +16,19 @@ public class Student {
         this.examScores = new ArrayList<>();
         this.examScores.addAll(Arrays.asList(examScore));
     }
-    public static String getFirstName(String firstName){
-
+    public static String getFirstName(){
         return firstName;
     }
 
-    public static String getLastName(String lastName){
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public static String getLastName(){
         return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 

@@ -14,8 +14,8 @@ public class StudentTest {
         Integer expectedNumberOfExamsTaken = 4;
         Student student = new Student(expectedFirstName, expectedLastName, expectedExamScores);
         //When
-        String actualFirstName = student.getFirstName(expectedFirstName);
-        String actualLastName = student.getLastName(expectedLastName);
+        String actualFirstName = student.getFirstName();
+        String actualLastName = student.getLastName();
         Integer actualNumberOfExamsTaken = student.getNumberOfExamsTaken();
 
         //Then
@@ -26,9 +26,9 @@ public class StudentTest {
 
     @Test
     public void testGetFirstName() {
-        String expected = "Keanu";
+        String expected = "Uyen";
 
-        String actual = Student.getFirstName(expected);
+        String actual = Student.getFirstName();
 
         Assert.assertEquals(expected, actual);
     }
@@ -37,7 +37,7 @@ public class StudentTest {
     public void testGetLastName() {
         String expected = "Le";
 
-        String actual = Student.getLastName(expected);
+        String actual = Student.getLastName();
         
         Assert.assertEquals(expected, actual);
     }

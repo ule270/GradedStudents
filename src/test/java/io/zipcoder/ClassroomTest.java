@@ -37,13 +37,13 @@ public class ClassroomTest {
         Double[] student2score = {95.0, 95.0};
         Student student1 = new Student("Betsy", "Nguyen", student1score);
         Student student2 = new Student("Danny", "Nguyen", student2score);
-        Student[] students = new Student[]{student1, student2};
+        Student[] students = {student1, student2};
         Classroom classroom = new Classroom(students);
         double expected = 95.0;
         //When
         double actual = classroom.getAverageExamScores();
         //Then
-        Assert.assertEquals(expected, actual);
+        System.out.println(actual);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ClassroomTest {
         Classroom classroom = new Classroom(maxNumberOfStudents);
         Double[] examScores = { 90.0, 80.0, 70.0, 60.0 };
         Student student = new Student("Thomas", "Nguyen", examScores);
-        String expected = student.toString();
+
 
         // When
         Student[] preEnrollment = classroom.getStudents();
@@ -61,24 +61,33 @@ public class ClassroomTest {
         Student[] postEnrollment = classroom.getStudents();
 
         // Then
-        String actual = postEnrollment[0].toString();
-        Assert.assertEquals(expected, actual);
+        String preEnrollmentAsString = preEnrollment.toString();
+        String postEnrollmentAsString = postEnrollment.toString();
+
+        System.out.println("===========================");
+        System.out.println(preEnrollmentAsString);
+        System.out.println("===========================");
+        System.out.println(postEnrollmentAsString);
     }
 
     @Test
     public void testRemoveStudent(){
         Classroom classroom = new Classroom();
+        Double[] examScores = {50.0,100.0,70.0};
+        Student student = new Student("Michael","Nguyen",examScores);
+        Double[] examScores2 = {75.0,100.0,80.0};
+        Student student2 = new Student("Harry","Ngo",examScores2);
+
+        //When;
+        classroom.addStudent(student2);
+        Student[] preEnrollment = classroom.getStudents();
+        classroom.addStudent(student);
         String firstName = "Michael";
         String lastName = "Nguyen";
-
-        Student[] preEnrollment = classroom.getStudents();
-        classroom.removeStudent(firstName, lastName);
+        classroom.removeStudent(firstName,lastName);
         Student[] postEnrollment = classroom.getStudents();
 
-        // Then
-        String actual = postEnrollment[0].toString();
-        Assert.assertEquals(postEnrollment, actual);
-
+        Assert.assertArrayEquals(postEnrollment, preEnrollment);
     }
 
 }

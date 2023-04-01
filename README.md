@@ -424,8 +424,11 @@
 <br><br><br><br><br>
 
 * **Define method `removeStudent(String firstName, String lastName)`**
-	* The class `Classroom` should define a method which uses a `firstName` and `lastName` parameter to identify and remove the respective student from composite `students` object.
-	* Ensure the array is re-ordered after the removal; Null values should be located in the final indices of the array.
+	* The class `Classroom` should define a method which uses a `firstName` 
+    * and `lastName` parameter to identify and remove the respective 
+    * student from composite `students` object.
+	* Ensure the array is re-ordered after the removal; 
+    * Null values should be located in the final indices of the array.
 
 
 

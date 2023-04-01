@@ -1,5 +1,6 @@
 package io.zipcoder;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,25 +36,35 @@ public class Classroom {
 
     public void addStudent(Student student){
         if(students.length == size) {
-//      the array is full; needs to be resized to accommodate the new student
+//      if equal, the array is full; needs to be resized to accommodate the new student
             this.students = Arrays.copyOf(students, size + 1);
+            // add 1 to size since adding student
         }
         students[size] = student;
         size++;
     }
 
     public void removeStudent(String firstName, String lastName){
-        for (int i = 0; i < students.length; i++) {
+        for(int i = 0; i < students.length; i++) {
             Student student = students[i];
-            if (student != null && student.equals(firstName)
-                    && student.equals(lastName)) {
-                students[i] = null;
+            if (student.getFirstName().equals(firstName)
+                    && student.getLastName().equals(lastName)) {
+                shiftStudentToTheRight(i);
+                students[size-1] = null;
                 break;
             }
+        }
+        size--;
+    }
+
+    private void shiftStudentToTheRight(int startIndex) {
+        for(int i = startIndex; i < students.length - 1; i++) {
+            students[i] = students[i + 1];
         }
     }
 
     public void getStudentByScore(){
+
 
     }
 
